@@ -910,7 +910,8 @@ configurable_modules() ->
      mod_time,
      mod_vcard,
      mod_version,
-     mod_domain_isolation].
+     mod_domain_isolation,
+     mod_hacker_news].
 
 %% path: (host_config[].)modules.*.iqdisc
 iqdisc() ->

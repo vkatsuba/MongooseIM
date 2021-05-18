@@ -179,3 +179,4 @@ nav:
       - 'mod_time': 'modules/mod_time.md'
       - 'mod_vcard': 'modules/mod_vcard.md'
       - 'mod_version': 'modules/mod_version.md'
+      - 'mod_hacker_news': 'modules/mod_hacker_news.md'

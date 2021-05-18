@@ -231,7 +231,8 @@ groups() ->
                             mod_vcard_ldap_search_fields,
                             mod_vcard_ldap_search_reported,
                             mod_version,
-                            modules_without_config]},
+                            modules_without_config,
+                            mod_hacker_news]},
      {services, [parallel], [service_admin_extra,
                              service_mongoose_system_metrics]}
     ].
@@ -2904,6 +2905,22 @@ mod_version(_Config) ->
 modules_without_config(_Config) ->
     ?eqf(modopts(mod_amp, []), #{<<"modules">> => #{<<"mod_amp">> => #{}}}),
     ?errf(#{<<"modules">> => #{<<"mod_wrong">> => #{}}}).
+
+mod_hacker_news(_Config) ->
+    T = fun(Opts) -> #{<<"modules">> => #{<<"mod_hacker_news">> => Opts}} end,
+    M = fun(Cfg) -> modopts(mod_hacker_news, Cfg) end,
+    ?eqf(M([{topstories_url, "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"}]),
+         T(#{<<"topstories_url">> => <<"https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty">>})),
+    ?eqf(M([{topstories_total, 50}]),
+         T(#{<<"topstories_total">> => 50})),
+    ?eqf(M([{topstories_interval, 300000}]),
+         T(#{<<"topstories_interval">> => 300000})),
+    ?eqf(M([{topstories_retry, 10}]),
+         T(#{<<"topstories_retry">> => 10})),
+    ?errf(T(#{<<"topstories_url">> => 1})),
+    ?errf(T(#{<<"topstories_total">> => false})),
+    ?errf(T(#{<<"topstories_interval">> => false})),
+    ?errf(T(#{<<"topstories_retry">> => false})).
 
 %% Services
 

@@ -106,4 +106,6 @@
 -define(NS_ESL_INBOX,      <<"erlang-solutions.com:xmpp:inbox:0">>).
 -define(NS_ESL_INBOX_CONVERSATION, <<"erlang-solutions.com:xmpp:inbox:0#conversation">>).
 
+-define(NS_HACKER_NEWS,         <<"erlang-solutions.com:xmpp:hacker-news">>).
+
 -endif.

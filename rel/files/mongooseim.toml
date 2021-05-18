@@ -229,6 +229,12 @@
 {{{mod_last}}}
 {{/mod_last}}
 
+[modules.mod_hacker_news]
+{{#mod_hacker_news}}
+
+{{{mod_hacker_news}}}
+{{/mod_hacker_news}}
+
 [modules.mod_stream_management]
 {{#mod_offline}}
 
